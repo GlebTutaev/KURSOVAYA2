@@ -17,8 +17,10 @@ public class DbHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onCreate(SQLiteDatabase sqLiteDatabase) {
+    public void onCreate(SQLiteDatabase db) {
 
+        db.execSQL("CREATE TABLE Roles ( ID   INTEGER PRIMARY KEY, Role TEXT )");
+        db.execSQL("CREATE TABLE Users( ID INTEGER PRIMARY KEY, Role REFERENCES Roles (ID), Login TEXT, Password TEXT)");
     }
 
     @Override
